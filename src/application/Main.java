@@ -1,17 +1,20 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     final static int CURRENT_YEAR = 2026;
-    public static void main(String[] args){
-        final String GREETING_MESSAGE = "Saludo estudiantes de Java"
+     static List<Integer> agesStudentlist = new ArrayList<>();
+     public static void main(String[] args){
+        final String GREETING_MESSAGE = "Saludo estudiantes de Java";
 
         String [] namesStudents = {"Juan", "Maria", "Pedro", "Ana", "luis"};
         int [] birthYear = {2000, 1998, 2002, 1995, 2001};
 
-        list<int[]> agesStudentlist = new ArrayList<>();
+
         showMessage(GREETING_MESSAGE);
+        listStudents((namesStudents), fillAgesList(birthYear));
     }
     static void showMessage(String message) {
         System.out.println(message);
@@ -19,7 +22,22 @@ public class Main {
     static int calculateAge(int  birthYear){
         return CURRENT_YEAR - birthYear;
     }
+    static List<Integer> fillAgesList(int[] birthYears) {
 
+        for (int birthYear : birthYears)
+        {
+            int age = calculateAge(birthYear);
+            agesStudentlist.add(age);
+        }
+        return  agesStudentlist;
+    }
+
+    static void listStudents(String[] namesStudents, List<Integer>agesStudents){
+        showMessage("Lista de estudiantes:");
+        for (int i = 0 ; i < namesStudents.length; i++){
+            showMessage((namesStudents[i]) + " - Edad:"+ agesStudents.get(i));
+     }
+    }
 
 
 }
